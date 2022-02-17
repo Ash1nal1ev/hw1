@@ -39,3 +39,9 @@ def review_detail_view(request, id):
     review = models.Review.objects.get(id=id)
     data = serializers.ReviewSerializer(review).data
     return Response(data=data)
+
+@api_view(["GET"])
+def review_movie_list_view(request):
+    movie = models.Movie.objects.all()
+    data = serializers.ReviewMovieSerializer(movie, many=True).data
+    return Response(data=data)
