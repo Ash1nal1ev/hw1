@@ -27,13 +27,6 @@ class Movie(models.Model):
         return self.title
 
 class Review(models.Model):
-    STARS = (
-        (1,'Bad'),
-        (2,'Nice'),
-        (3,'Good'),
-        (4,'Fine'),
-        (5,'Amazing'),
-    )
     text = models.TextField()
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='review')
     stars = models.PositiveIntegerField(default=5, validators=[MinValueValidator(1), MaxValueValidator(5)], null=True)
